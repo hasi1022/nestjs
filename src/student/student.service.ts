@@ -32,7 +32,10 @@ export class StudentService {
     // PATCH
     patchStudent(id:number,data:Partial<{name:string,rollNo:number}>){
         const studentPatch=this.getStudentId(id)
-        Object.assign(!studentPatch,data)
+        if(!studentPatch){
+            throw new Error('NO student with this id found')
+        }
+        Object.assign(studentPatch,data)
         return studentPatch
     }
     //delete
@@ -42,6 +45,7 @@ export class StudentService {
             throw new NotFoundException
         }
         const deleted=this.student.splice(index,1)
+        return this.student[index]
     }
 
 }
