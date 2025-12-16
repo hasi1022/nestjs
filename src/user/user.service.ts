@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import User from 'utils/user';
 import { creatUser } from './dto/user.dto';
-import {user} from './dto/user.dto'
+import {Iuser} from './interface/user.interface'
 import { NotFoundError } from 'rxjs';
 
 @Injectable()
@@ -12,14 +12,14 @@ export class UserService {
         @InjectRepository(User)
         private readonly userRepo:Repository<User>
      ){}
-     async createUser(createUser:creatUser):Promise<User>{
+     async createUser(createUser:creatUser):Promise<Iuser>{
       const user=this.userRepo.create(createUser);
       return await this.userRepo.save(user)
      }
-     async findAll():Promise<User[]>{
+     async findAll():Promise<Iuser[]>{
         return this.userRepo.find()
      }
-     async find(id:number):Promise<User|null>{
+     async find(id:number):Promise<Iuser|null>{
         return this.userRepo.findOneBy({id:id})
      }
      async delete(id:number){
@@ -29,4 +29,12 @@ export class UserService {
         }
         return user
      }
+     async update(id:number,updateData:Iuser){
+        const user=await this.userRepo.update({id:id},{...updateData})
+        if(!user){
+            throw new Error('no user with this id found')
+        }
+        return user
+     }
+
 }
