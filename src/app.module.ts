@@ -12,6 +12,7 @@ import { User } from 'utils/user';
 import AppDataSource from 'migration/data-source';
 import { typeOrmConfig } from 'migration/typeorm.config';
 import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
@@ -27,7 +28,8 @@ import { UserModule } from './user/user.module';
       logging: true,
     }),
     TypeOrmModule.forFeature([User]),
-    UserModule],
+    UserModule,
+    AuthModule],
   controllers: [AppController, LionController, ProductController],
   providers: [AppService, ProductService],
 })
