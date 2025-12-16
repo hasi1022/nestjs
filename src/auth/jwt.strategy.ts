@@ -8,7 +8,6 @@ export class JwtStrategy extends PassportStrategy(Strategy){
             ignoreExpiration:false,
             secretOrKey:'345hi9w1'
         })}
-
         async validate(payload:any){
             return{
                 userId:payload.id,

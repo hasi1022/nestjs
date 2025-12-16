@@ -1,4 +1,5 @@
-import { Entity,Column,PrimaryGeneratedColumn } from "typeorm";
+import { Entity,Column,PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import { Invoice } from "./invoices";
 @Entity('User')
 export class User{
     @PrimaryGeneratedColumn()
@@ -9,5 +10,7 @@ export class User{
     email:string
     @Column()
     password:string
+    @OneToMany(()=>Invoice,Invoice=>Invoice.user)
+    invoices:Invoice[]
 }
 export default User

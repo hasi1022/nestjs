@@ -8,11 +8,14 @@ import { EmployeModule } from './employe/employe.module';
 import { StudentModule } from './student/student.module';
 import {TypeOrmModule} from '@nestjs/typeorm';
 import { User } from 'utils/user';
+import { Invoice } from 'utils/invoices';
+import { Items } from 'utils/items';
 
 import AppDataSource from 'migration/data-source';
 import { typeOrmConfig } from 'migration/typeorm.config';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+
 
 
 @Module({
@@ -23,7 +26,7 @@ import { AuthModule } from './auth/auth.module';
       username: 'postgres',
       password: '12345678',
       database: 'newUser2',
-      entities: [User],
+      entities: [User,Invoice,Items],
       synchronize: true, 
       logging: true,
     }),
