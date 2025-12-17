@@ -1,15 +1,15 @@
 
-export class Iuser{
+export interface Iuser{
     id:number;
     name:string;
     email:string;
     password:string;
 }
-export class login{
+export interface login{
     email:string;
     password:string;
 }
-export class IcreateUser{
+export interface IcreateUser{
    name:string;
    email:string;
    password:string;

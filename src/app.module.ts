@@ -15,6 +15,7 @@ import AppDataSource from 'migration/data-source';
 import { typeOrmConfig } from 'migration/typeorm.config';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { InvoiceModule } from './invoice/invoice.module';
 
 
 
@@ -32,7 +33,8 @@ import { AuthModule } from './auth/auth.module';
     }),
     TypeOrmModule.forFeature([User]),
     UserModule,
-    AuthModule],
+    AuthModule,
+    InvoiceModule],
   controllers: [AppController, LionController, ProductController],
   providers: [AppService, ProductService],
 })

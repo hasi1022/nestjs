@@ -6,7 +6,7 @@ export class Invoice{
     @PrimaryGeneratedColumn()
     id:number;
     @Column()
-    invoiceNumber:number;
+    billTo:string;
     @Column()
     invoiceDate:Date;
     @Column('decimal')
@@ -14,6 +14,6 @@ export class Invoice{
     @ManyToOne(()=>User,User=>User.invoices,{onDelete:'CASCADE'})
     user:User
     @OneToMany(()=>Items,Items=>Items.invoices,{cascade:true})
-    item:Items[]
+    items:Items[]
     
 }

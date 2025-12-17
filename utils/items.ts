@@ -12,6 +12,6 @@ export class Items{
     productUnitPrice:number;
     @Column('decimal')
     productTotalPrice:number;
-    @ManyToOne(()=>Invoice,Invoice=>Invoice.item,{onDelete:'CASCADE'})
+    @ManyToOne(()=>Invoice,Invoice=>Invoice.items,{onDelete:'CASCADE'})
     invoices:Invoice
 }

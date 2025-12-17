@@ -3,13 +3,13 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import User from 'utils/user';
 import { creatUser } from './dto/user.dto';
-import {Iuser} from './interface/user.interface'
+import type {Iuser} from './interface/user.interface'
 import { NotFoundError } from 'rxjs';
-import { login } from './interface/user.interface';
+import type { login } from './interface/user.interface';
 import * as bcrypt from "bcrypt"
 import { access } from 'fs';
 import {JwtService} from '@nestjs/jwt'
-import { IcreateUser } from './interface/user.interface';
+import type { IcreateUser } from './interface/user.interface';
 
 @Injectable()
 export class UserService {
